@@ -1,11 +1,12 @@
 
 
 const gridContainer = document.querySelector(".container");
+const btnSize = document.querySelector(".size");
 
-function createRow(){
+function createRow(size = 16){
 	let rowContainer = document.createElement('div')
 
-	for (let i = 0; i < 16; i++) {
+	for (let i = 0; i < size; i++) {
 	  let rowSquare = document.createElement('div')
 	  rowSquare.classList.add("square");
 	  rowSquare.addEventListener("mouseover", (event) => myScript(rowSquare));
@@ -16,8 +17,8 @@ function createRow(){
 	return rowContainer
 }
 
-function createGrid(){
-	for (let i = 0; i < 16; i++) {
+function createGrid(size = 16){
+	for (let i = 0; i < size; i++) {
 		gridContainer.appendChild(createRow());
 	}
 }
@@ -27,6 +28,12 @@ function myScript(square) {
 }
 
 createGrid()
+
+btnSize.addEventListener('click', () => {
+  prompt("What size?")
+})
+
+
 
 
 
