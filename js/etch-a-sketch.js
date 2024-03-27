@@ -30,11 +30,17 @@ function createGrid(size = 16){
 
 function squareColor(square) {
 	square.style.backgroundColor = generateRandomColor()
+	console.log(generateRandomColor())
+	// let squareOpacity = window.getComputedStyle(square).getPropertyValue('opacity')
+	// square.style.opacity = squareOpacity + 1
 }
 
 function generateRandomColor() {
-	randomColor = Math.floor(Math.random()*16777215).toString(16);
-	return "#" + randomColor
+  return `rgb(${getRandomInt()}, ${getRandomInt()}, ${getRandomInt()})`
+}
+
+function getRandomInt() {
+  return Math.floor(Math.random() * (255 - 1 + 1) + 1);
 }
 
 function getSize() {
