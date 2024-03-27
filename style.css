@@ -1,8 +1,14 @@
 
+.heading {
+	display: flex;
+	justify-content: center;
+	color: yellow;
+	margin-bottom: 100px;
+}
+
 .container {
 	display: flex;
-	height: 700px;
-	width: 700px;
+	justify-content: center;
 }
 
 .row {
