@@ -29,14 +29,27 @@ function createGrid(size = 16){
 }
 
 function squareColor(square) {
-	square.style.backgroundColor = generateRandomColor()
-	console.log(generateRandomColor())
-	// let squareOpacity = window.getComputedStyle(square).getPropertyValue('opacity')
-	// square.style.opacity = squareOpacity + 1
+	let color = window.getComputedStyle(square).getPropertyValue('background-color')
+
+	if (color == "rgba(0, 0, 0, 0)") {
+		square.style.backgroundColor = generateRandomColor()
+	} else {
+		square.style.backgroundColor = darkenRGB(color)
+	}
 }
 
 function generateRandomColor() {
   return `rgb(${getRandomInt()}, ${getRandomInt()}, ${getRandomInt()})`
+}
+
+function darkenRGB(color) {
+	const rgbArray = color.match(/\d+/g)
+	const result = rgbArray.map(subtractTen)
+	return `rgb(${result.join(', ')})`
+}
+
+function subtractTen(num) {
+  return Number(num) - 25
 }
 
 function getRandomInt() {
