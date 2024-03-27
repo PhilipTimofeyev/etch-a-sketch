@@ -2,8 +2,6 @@
 
 const container = document.querySelector(".container");
 const btnSize = document.querySelector(".size");
-// let gridContainer = document.createElement("div");
-// container.appendChild(gridContainer)
 
 function createRow(size = 16){
 	let rowContainer = document.createElement('div')
@@ -11,7 +9,7 @@ function createRow(size = 16){
 	for (let i = 0; i < size; i++) {
 	  let rowSquare = document.createElement('div')
 	  rowSquare.classList.add("square");
-	  rowSquare.addEventListener("mouseover", (event) => myScript(rowSquare));
+	  rowSquare.addEventListener("mouseover", (event) => squareColor(rowSquare));
 	  rowContainer.appendChild(rowSquare)
 	}
 	rowContainer.classList.add("row");
@@ -30,8 +28,13 @@ function createGrid(size = 16){
 	container.appendChild(gridContainer)
 }
 
-function myScript(square) {
-	square.style.backgroundColor = 'green';
+function squareColor(square) {
+	square.style.backgroundColor = generateRandomColor()
+}
+
+function generateRandomColor() {
+	randomColor = Math.floor(Math.random()*16777215).toString(16);
+	return "#" + randomColor
 }
 
 function getSize() {
